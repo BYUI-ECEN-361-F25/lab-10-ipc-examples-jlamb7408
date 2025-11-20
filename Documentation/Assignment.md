@@ -80,12 +80,12 @@ Now make sure to write the code inside of the Semaphore_Toggle_Task function tha
 
 <br>
 1. How did your task ‘wait’ for the debounced button? <br>
-<mark>_______________________________________________________ </mark>
+<mark>My task utlizies the start debounce task to release the semaphore.</mark>
 <br>
 <br><br>
 
 2.)	How long is the time between the button interrupt coming in and it being enabled again? <br>
-<mark>_______________________________________________________ </mark>
+<mark>30 ms</mark>
 ><br>
 > <br>
 
@@ -96,11 +96,11 @@ Now create a second task (semaphore_Toggle_D3) -- <p>
 
 
 3.)	Do both of (D4 and D3) toggle with a single button press?  Describe the behavior?  <br>
-<mark>_________________________________________________________________________________<br><br>
+<mark>No. With one button push only one toggle happens. First D4 and then D3.<br><br>
 
 4.)	Now change one of the priorities of these two tasks, re-compile,  and re-run.
 How has the behavior changed?
-<mark>_________________________________________________________________________________<br><br>
+<mark>Which ever button has the higher piroity gets the toggle, the other button never toggles. <br><br>
 
 
 ## Part 2: Mutexes
@@ -152,12 +152,12 @@ current count. The first two processes are done for you "Mutex_CountDownTask" an
 >
 ><br>
 >7.)	Comment on the Up/Down/ ”—” display that you see.  <br><br>
-><mark>___________________________________________________________________________________________________________<br><br><p>
+><mark>It is contantly swithcing between the dashes and counting up and down around the number 50. <br><br><p>
 
 
 >8.)	Is there a ‘priority’ associated with the Mutex?  If so, how can it be changed?
 ><br>  
-><mark>___________________________________________________________________________________________________________<br><br>
+><mark>No, mutex does not have priority.<br><br>
 <p>
 
 ><br>
@@ -165,7 +165,7 @@ current count. The first two processes are done for you "Mutex_CountDownTask" an
 
 >  Change the priority of the Reset to be osPriorityIdle.  This is the lowest priority available. Note that you will not find this priority type listed in the .ioc configuration, as it is intended to be used for idle threads. This priority must be manually set in the code.<br>
 ><br> Did you see any effect on the ability of Button_3 to reset the count?<br><br>
-><mark>___________________________________________________________________________________________________________<br><br>
+><mark>I saw no changes after changing the priority.<br><br>
 >
 ---
 <!--------------------------------------------------------------------------------->
@@ -196,12 +196,12 @@ display digit.
 >
 >10.) This timer was created via the GUI  (.IOC file).  It’s type is *“osTimerPeriodic”* which means it repeats over and over.<br><br>
 What other options can a Software Timer take to change its Type and operation? <br>
-><mark>___________________________________________________________________________________________________________<br><br>
+><mark>ANother option given in the IOC is to active once instead of periodic. <br><br>
 
 >11).	The debounce for the switches here used an osDelay() call (non-blocking).  Is there any advantage to using a SWTimer here instead?<br>
 > Explain why or why not?
 >
-><mark>___________________________________________________________________________________________________________<br><br>
+><mark>It is effecively the same in pracitve as they both utilize non blocking timers.<br><br>
 
 
 <!--------------------------------------------------------------------------------->
@@ -216,7 +216,7 @@ What other options can a Software Timer take to change its Type and operation? <
 >2.	We only used a binary semaphore in this lab for the switch presses.  Change it so that presses are accumulated through a counting semaphore and then handled as they are taken off.<br><br>
 >Describe any issues with this approach
 >
-><mark>___________________________________________________________________________________________________________<br><br>
+><mark>The main issue I am seeing is there is a little button bouncing with this aproach. <br><br>
 >
 
 >
